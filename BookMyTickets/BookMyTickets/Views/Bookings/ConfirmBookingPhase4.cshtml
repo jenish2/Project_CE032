@@ -1,0 +1,126 @@
+﻿@model Booking
+
+<h2>Tickets are Successfully Booked</h2>
+
+<style>
+    .page-wrapper,
+    .content-wrapper {
+        background: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content-wrapper {
+        margin-top: 1vh;
+        margin-bottom: 0vh;
+        margin-left: 4vw;
+        margin-right: 4vw;
+        padding: 2vh 2vw;
+    }
+</style>
+
+
+<div class="page-wrapper">
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                    <div class="card" style="width: 18rem;">
+                        <img src="@ViewBag.Url" class="card-img-top">
+                    </div>
+                </div>
+                <div class="column">
+                    <h2> Movie Name:- @ViewBag.MovieName</h2>
+                    <b>Movie Language:-</b>
+                    <p>@ViewBag.Language</p>
+                    <b>Movie Genre:-</b>
+                    <p>@ViewBag.Genre</p>
+                    <b>Movie Director:-</b>
+                    <p>@ViewBag.Director</p>
+                    <b>Movie duration:-</b>
+                    <p>@ViewBag.Duretion min.</p>
+                    <b>Movie releaseDate:-</b>
+                    <p>@ViewBag.ReleaseDate</p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="container" style="margin:2rem;">
+            <div class="row">
+                <table>
+                    <tr>
+                        <td><b>Show Id:-</b></td>
+                        <td>@Model.ShowId</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Theater Name:-</b></td>
+                        <td>@Model.TheaterName</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Screen No:-</b></td>
+                        <td>@Model.ScreenNo</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Show Starting Time:-</b></td>
+                        <td>@ViewBag.StartTime</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Show Date:-</b></td>
+                        <td>@Model.Date</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Price per seat:-</b></td>
+                        <td>@ViewBag.Price Rs.</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>User Name:-</b></td>
+                        <td>@Model.UserName</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Screen Number:-</b></td>
+                        <td>@Model.ScreenNo</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Total Ticket(Seat) Booked:-</b></td>
+                        <td>@Model.TotalTickets</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Seat Number:-</b></td>
+                        <td>@Model.SeatNo1</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Seat Number:-</b></td>
+                        <td>@Model.SeatNo2</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Seat Number:-</b></td>
+                        <td>@Model.SeatNo3</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Total Cost(14% Gst & 4%other charges are included):-</b></td>
+                        <td>@Model.TotalCost</td>
+
+                    </tr>
+                    <tr>
+                        <td><b>City:-</b></td>
+                        <td>@Model.City</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div></div>
+    <hr />

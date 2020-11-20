@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BookMyTickets.Models.Theater>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <style>
+        #seeAllTheaters{
+            background-color:aliceblue;
+        }
+    </style>
+<h3>List Of All Registered Theater</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TheaterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoOfScreen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheaterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfScreen)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TheaterId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TheaterId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TheaterId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

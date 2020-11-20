@@ -1,0 +1,281 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookMyTickets - @ViewData["Title"] </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333545;
+        }
+
+        #NameOfCompany {
+            font-size: x-large;
+            color: white;
+        }
+
+        #secondary-nav {
+            background: #1f2533;
+            color: white;
+        }
+
+        #primary-nav {
+            background: #333545;
+            color: white;
+        }
+
+        #logo {
+            width: 5vw;
+            height: 8vh;
+        }
+
+        #slider {
+            margin: 1vh;
+            width: auto;
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+            background-color: transparent;
+        }
+
+        .page-wrapper,
+        .content-wrapper {
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            margin-top: 1vh;
+            margin-bottom: 0vh;
+            margin-left: 4vw;
+            margin-right: 4vw;
+            padding: 2vh 2vw;
+        }
+
+        .headingOfContent {
+            height: 14vh;
+        }
+
+        .list {
+            padding-top: 0.6vh;
+        }
+
+        .headingList {
+            display: inline;
+            margin-left: 1vw;
+        }
+
+
+        .selected {
+            font-size: large;
+            background-color: rgba(243, 194, 194, 0.932);
+        }
+
+
+        button {
+            padding: 0.5vh 0.5vw;
+            border-color: rgb(199, 198, 198);
+            border-radius: 0.7vh;
+            -webkit-border-radius: 0.7vh;
+            -moz-border-radius: 0.7vh;
+            -ms-border-radius: 0.7vh;
+            -o-border-radius: 0.7vh;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            background-color: #333545;
+            width: 100%;
+            size: 10rem;
+            text-align: center;
+            line-height: 3rem;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="primary-nav" class="container">
+            <div class="row">
+                <div class="column col-3 my-3" id="NameOfCompany">
+                    <img src="https://i.postimg.cc/g2rLYGT9/favicon.jpg" id="logo">BookMyTickets
+                </div>
+                <div class="column col-5 my-3" id="search">
+                    <input type="search" placeholder="Search Movies By Name... ">
+                </div>
+                <div class="column col-2 my-3" id="location">
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#citymodal">Enter City</button>
+                </div>
+                <div class="column col-2 my-3" id="profile">
+                    @if (@HttpContextAccessor.HttpContext.Session.GetString("UserName") != "")
+                    {
+                        <p>Hello!!..@HttpContextAccessor.HttpContext.Session.GetString("UserName")</p>
+                    }
+                    else if (@HttpContextAccessor.HttpContext.Session.GetString("TheaterName") != "")
+                    {
+                        <p>Hello!!..@HttpContextAccessor.HttpContext.Session.GetString("TheaterName")</p>
+                    }
+                    else
+                    { 
+                        <p>Hello!!..Guest</p>
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="secondary-nav">
+            <ul class="nav nav-tabs">
+                <li class="nav-item" id="navHome">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                @if (@HttpContextAccessor.HttpContext.Session.GetString("UserName") == "")
+                {
+                    @if (@HttpContextAccessor.HttpContext.Session.GetString("TheaterName") == "")
+                    {
+                        <li class="nav-item" id="navSignInForCustomer">
+                            <a class="nav-link" asp-controller="Users" asp-action="SignInForUser">Signin for Customers</a>
+                        </li>
+                        <li class="nav-item" id="navSignInForTheater">
+                            <a class="nav-link" asp-controller="Theaters" asp-action="SignInForTheater">Signin for Theaters</a>
+                        </li>
+                        <li class="nav-item" id="navAllMovieList">
+                            <a class="nav-link" asp-controller="Movies" asp-action="movieList">All Movies List</a>
+                        </li>
+                        <li class="nav-item" id="navAboutUs">
+                            <a class="nav-link" asp-controller="Home" asp-action="AboutUs">AboutUs</a>
+                        </li>
+                        <li class="nav-item" id="navContactUs">
+                            <a class="nav-link" asp-controller="Queries" asp-action="Create">ContactUs</a>
+                        </li>
+                    }
+                }
+                @if (@HttpContextAccessor.HttpContext.Session.GetString("UserName").Equals("Admin"))
+                {
+                    <li class="nav-item" id="addMovie">
+                        <a class="nav-link" asp-controller="Movies" asp-action="Create">Add Movie</a>
+                    </li>
+                    <li class="nav-item" id="EditMovie">
+                        <a class="nav-link" asp-controller="Movies" asp-action="EditMovie">Edit Movie</a>
+                    </li>
+                    <li class="nav-item" id="DeleteMovie">
+                        <a class="nav-link" asp-controller="Movies" asp-action="DeleteMovie">Delete Movie</a>
+                    </li>
+                    <li class="nav-item" id="seeAllUsers">
+                        <a class="nav-link" asp-controller="Users" asp-action="Index">See All Users</a>
+                    </li>
+                    <li class="nav-item" id="seeAllTheaters">
+                        <a class="nav-link" asp-controller="Theaters" asp-action="Index">See All Theater</a>
+                    </li>
+                    <li class="nav-item" id="seeAllBookings">
+                        <a class="nav-link" asp-controller="Bookings" asp-action="Index">See All Bookings</a>
+                    </li>
+                    <li class="nav-item" id="seeAllShows">
+                        <a class="nav-link" asp-controller="Shows" asp-action="Index">See All The Shows</a>
+                    </li>
+                    <li class="nav-item" id="navContactUs">
+                        <a class="nav-link" asp-controller="Queries" asp-action="Index">See All Queries</a>
+                    </li>
+                }
+
+                @if (@HttpContextAccessor.HttpContext.Session.GetString("UserName") != "")
+                {
+                    @if (!@HttpContextAccessor.HttpContext.Session.GetString("UserName").Equals("Admin"))
+                    {
+                        <li class="nav-item" id="navAllMovieList">
+                            <a class="nav-link" asp-controller="Movies" asp-action="movieList">All Movies List</a>
+                        </li>
+                        <li class="nav-item" id="navAboutUs">
+                            <a class="nav-link" asp-controller="Home" asp-action="AboutUs">AboutUs</a>
+                        </li>
+                        <li class="nav-item" id="navContactUs">
+                            <a class="nav-link" asp-controller="Queries" asp-action="Create">ContactUs</a>
+                        </li>
+                        <li class="nav-item" id="navBookingOfUser">
+                            <a class="nav-link" asp-controller="Bookings" asp-action="BookedTicketsOfUser">Booked Tickets Of @HttpContextAccessor.HttpContext.Session.GetString("UserName")</a>
+                        </li>
+                        <li class="nav-item" id="navProfile">
+                            <a class="nav-link" asp-controller="Users" asp-action="Profile">Profile Of @HttpContextAccessor.HttpContext.Session.GetString("UserName")</a>
+                        </li>
+                    }
+                    <li class="nav-item" id="navSignInForCustomer">
+                        <a class="nav-link" asp-controller="Users" asp-action="LogOutForUser">LogOut For @HttpContextAccessor.HttpContext.Session.GetString("UserName")</a>
+                    </li>
+                }
+                @if (@HttpContextAccessor.HttpContext.Session.GetString("TheaterName") != "")
+                {
+                    <li class="nav-item" id="navAllMovieList">
+                        <a class="nav-link" asp-controller="Movies" asp-action="movieList">All Movies List</a>
+                    </li>
+                    <li class="nav-item" id="navAboutUs">
+                        <a class="nav-link" asp-controller="Home" asp-action="AboutUs">AboutUs</a>
+                    </li>
+                    <li class="nav-item" id="navContactUs">
+                        <a class="nav-link" asp-controller="Queries" asp-action="Create">ContactUs</a>
+                    </li>
+                    <li class="nav-item" id="navAddShow">
+                        <a class="nav-link" asp-controller="Shows" asp-action="Create">Add Show In Theater...@HttpContextAccessor.HttpContext.Session.GetString("TheaterName") </a>
+                    </li>
+                    <li class="nav-item" id="navSold">
+                        <a class="nav-link" asp-controller="Bookings" asp-action="SoldTickets">Sold(Booked) Tickets</a>
+                    </li>
+                    <li class="nav-item" id="navSignInForCustomer">
+                        <a class="nav-link" asp-controller="Theaters" asp-action="LogOutForTheater">LogOut For @HttpContextAccessor.HttpContext.Session.GetString("TheaterName")</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="citymodal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Enter Name of City:-</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <datalist id="city">
+                            <option value="Surat"></option>
+                            <option value="Ahmedabad"></option>
+                            <option value="Vadodara"></option>
+                            <option value="Rajkot"></option>
+                            <option value="Mumbai"></option>
+                            <option value="Pune"></option>
+                            <option value="Delhi"></option>
+                            <option value="Kolkata"></option>
+                            <option value="Bangluru"></option>
+                            <option value="Hydrabad"></option>
+                        </datalist> City:= <input type="text" list="city" placeholder=" Name Of City " required>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-success ">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <footer>
+        <font size=3 color="white ">
+            2020-2021 Online Movie Ticket Booking System
+            <br> Company ©. All rights reserved
+        </font>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<BookMyTickets.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <style>
+        #navAllMovieList {
+            background-color:aliceblue;
+        }
+    </style>
+
+<h3>List of All Movies</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duretion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cast)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duretion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cast)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MovieId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

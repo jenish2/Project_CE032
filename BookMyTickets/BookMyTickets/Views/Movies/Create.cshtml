@@ -1,0 +1,79 @@
+﻿@model BookMyTickets.Models.Movie
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    .MovieAdding {
+        box-shadow: 5px 15px rgb(203, 221, 236);
+        background-color: rgb(205, 247, 247);
+        display: flex;
+        flex-direction: column;
+        margin: 50px;
+        margin-left: 30%;
+        margin-right: 30%;
+        padding: 50px;
+        border-radius: 20px;
+        border: none;
+        height: auto;
+    }
+    #addMovie {
+        background-color:aliceblue;
+    }
+</style>
+<div class="MovieAdding">
+    <h2>Add Movie on the Site</h2>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="MovieName" class="control-label"></label>
+            <input asp-for="MovieName" class="form-control" />
+            <span asp-validation-for="MovieName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Genre" class="control-label"></label>
+            <input asp-for="Genre" class="form-control" />
+            <span asp-validation-for="Genre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Language" class="control-label"></label>
+            <input asp-for="Language" class="form-control" />
+            <span asp-validation-for="Language" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReleaseDate" class="control-label"></label>
+            <input asp-for="ReleaseDate" class="form-control" />
+            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Duretion" class="control-label"></label>
+            <input asp-for="Duretion" class="form-control" />
+            <span asp-validation-for="Duretion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Director" class="control-label"></label>
+            <input asp-for="Director" class="form-control" />
+            <span asp-validation-for="Director" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Cast" class="control-label"></label>
+            <input asp-for="Cast" class="form-control" />
+            <span asp-validation-for="Cast" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PosterUrl" class="control-label"></label>
+            <input asp-for="PosterUrl" class="form-control" />
+            <span asp-validation-for="PosterUrl" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+

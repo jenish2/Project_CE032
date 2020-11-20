@@ -1,0 +1,73 @@
+﻿@model BookMyTickets.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+    <style>
+        .signup {
+            box-shadow: 5px 15px rgb(203, 221, 236);
+            background-color: rgb(205, 247, 247);
+            display: flex;
+            flex-direction: column;
+            margin: 50px;
+            margin-left: 30%;
+            margin-right: 30%;
+            padding: 50px;
+            border-radius: 20px;
+            border: none;
+            height: auto;
+        }
+    </style>
+    <div class="signup">
+        <h2>SignUp For Customer</h2>
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Gender" class="control-label"></label>
+                        <input asp-for="Gender" class="form-control" />
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MobileNo" class="control-label"></label>
+                        <input asp-for="MobileNo" class="form-control" />
+                        <span asp-validation-for="MobileNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="SignUp For Customer" class="btn btn-primary" />
+                        <a style="margin-left:auto" class="btn btn-primary" name=" value="Go To Login" asp-controller="Users" asp-action="SignInForUser">Go To Login</a>
+                    </div>
+
+                </form>
+    </div>
+   
+

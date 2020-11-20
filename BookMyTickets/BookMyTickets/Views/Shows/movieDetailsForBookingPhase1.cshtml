@@ -1,0 +1,70 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "movieDetailsForBookingPhase1";
+}
+
+    <style>
+        .page-wrapper,
+        .content-wrapper {
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .content-wrapper {
+            margin-top: 1vh;
+            margin-bottom: 0vh;
+            margin-left: 4vw;
+            margin-right: 4vw;
+            padding: 2vh 2vw;
+        }
+    </style>
+
+
+    <div class="page-wrapper">
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="column">
+                        <div class="card" style="width: 18rem;">
+                            <img src="@Model.PosterUrl" class="card-img-top">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h2> Movie Name:- @Model.MovieName</h2>
+                        <b>Movie Description:-</b>
+                        <p>@Model.Description</p>
+                        <b>Movie Language:-</b>
+                        <p>@Model.Language</p>
+                        <b>Movie Genre:-</b>
+                        <p>@Model.Genre</p>
+                        <b>Movie Cast:-</b>
+                        <p>
+                            @Model.Cast
+                        </p>
+                        <b>Movie Director:-</b>
+                        <p>@Model.Director</p>
+                        <b>Movie duration:-</b>
+                        <p>@Model.Duretion min.</p>
+                        <b>Movie releaseDate:-</b>
+                        <p>@Model.ReleaseDate</p>
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div style="margin:9rem;">
+            <div class="container">
+                @using (Html.BeginForm("findShowsBookingPhase2", "Shows", FormMethod.Post))
+                {
+                    <p>Enter Movie Name</p>
+                    @Html.TextBox("MovieName")
+                    <p>Enter City</p>
+                    @Html.TextBox("City");
+                    <input type="submit" class="btn btn-primary" value="Buy Tickets">
+                }
+            </div>
+            </div>
+        </div>
+    </div>
+    <hr />

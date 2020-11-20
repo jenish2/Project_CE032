@@ -1,0 +1,107 @@
+﻿@model IEnumerable<BookMyTickets.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <style>
+        #seeAllBookings{
+            background-color:aliceblue;
+        }
+    </style>
+<h2>List Of All Bookings</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalTickets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatNo1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatNo2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatNo3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheaterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScreenNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Show)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalTickets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatNo1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatNo2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatNo3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheaterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScreenNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Show.ShowId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

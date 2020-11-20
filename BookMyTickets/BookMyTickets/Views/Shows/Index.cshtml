@@ -1,0 +1,79 @@
+﻿@model IEnumerable<BookMyTickets.Models.Show>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <style>
+        #seeAllShows{
+            background-color:aliceblue;
+        }
+    </style>
+    <h2>List of All Shows</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheaterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScreenNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Theater)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheaterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScreenNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Theater.Address)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ShowId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ShowId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ShowId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

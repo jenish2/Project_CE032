@@ -1,0 +1,45 @@
+﻿@model Query
+@{
+    ViewData["Title"] = "ContactUs";
+}
+<style>
+    #cus{
+        margin:5vh;
+    }
+    #navContactUs{
+        background-color:aliceblue;
+    }
+</style>
+ <div class="form-custom" id="cus">
+     <form action="#" method="post">
+         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+         <label for="name">Name</label>
+         <div>
+             @*<input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">*@
+             @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+             @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+             @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+         </div>
+
+         <label for="name">Email</label>
+         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+         @*<div><input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email"></div>*@
+
+         <label for="name">Phone</label>
+         @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+         @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+         @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+         <div><input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number"></div>
+
+         <label for="desc">How May We Help You?</label>
+         @Html.LabelFor(model => model.QueryContactUs, htmlAttributes: new { @class = "control-label col-md-2" })
+         @Html.EditorFor(model => model.QueryContactUs, new { htmlAttributes = new { @class = "form-control" } })
+         @Html.ValidationMessageFor(model => model.QueryContactUs, "", new { @class = "text-danger" })
+        @* <div><textarea class="form-control" id="desc" name="desc" cols="22" rows="5"></textarea></div>*@
+         <div class="button">
+             <input type="submit" value="Submit" class="btn btn-success">
+         </div>
+     </form>
+ </div>

@@ -1,0 +1,91 @@
+﻿@model BookMyTickets.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Booking</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookingId" />
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShowId" class="control-label"></label>
+                <select asp-for="ShowId" class="form-control" asp-items="ViewBag.ShowId"></select>
+                <span asp-validation-for="ShowId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalTickets" class="control-label"></label>
+                <input asp-for="TotalTickets" class="form-control" />
+                <span asp-validation-for="TotalTickets" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatNo1" class="control-label"></label>
+                <input asp-for="SeatNo1" class="form-control" />
+                <span asp-validation-for="SeatNo1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatNo2" class="control-label"></label>
+                <input asp-for="SeatNo2" class="form-control" />
+                <span asp-validation-for="SeatNo2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatNo3" class="control-label"></label>
+                <input asp-for="SeatNo3" class="form-control" />
+                <span asp-validation-for="SeatNo3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalCost" class="control-label"></label>
+                <input asp-for="TotalCost" class="form-control" />
+                <span asp-validation-for="TotalCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieName" class="control-label"></label>
+                <input asp-for="MovieName" class="form-control" />
+                <span asp-validation-for="MovieName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TheaterName" class="control-label"></label>
+                <input asp-for="TheaterName" class="form-control" />
+                <span asp-validation-for="TheaterName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ScreenNo" class="control-label"></label>
+                <input asp-for="ScreenNo" class="form-control" />
+                <span asp-validation-for="ScreenNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

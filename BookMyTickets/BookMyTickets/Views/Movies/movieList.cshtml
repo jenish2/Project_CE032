@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BookMyTickets.Models.Movie>
+@{
+    ViewData["Title"] = "movieList";
+}
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="column">
+                    <div class="card" style="width: 18rem;">
+                        <img src="@Html.DisplayFor(modelItem => item.PosterUrl)" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.MovieName)</h5>
+                            <p class="card-text">Genre:- @Html.DisplayFor(modelItem => item.Genre)</p>
+                            <p>Language:-@Html.DisplayFor(modelItem => item.Language)</p>
+                            <p>Cast:-@Html.DisplayFor(modelItem => item.Cast)</p>
+                            <p>Description:-@Html.DisplayFor(modelItem => item.Description)</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

@@ -1,0 +1,51 @@
+﻿@model Theater
+@{
+    ViewData["Title"] = "SignInForTheater";
+}
+
+<style>
+    #navSignInForTheater {
+        background-color: aliceblue;
+    }
+
+    .loginBox {
+        box-shadow: 5px 15px rgb(203, 221, 236);
+        background-color: rgb(205, 247, 247);
+        display: flex;
+        flex-direction: column;
+        margin: 50px;
+        margin-left: 30%;
+        margin-right: 30%;
+        /*  text-align: center;
+    align-items: center;
+    */
+        padding: 50px;
+        border-radius: 20px;
+        border: none;
+        height: auto;
+    }
+</style>
+
+<div class="loginBox">
+    <form action="#" method="POST">
+        <div>
+            <h1>Login For Theater</h1>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.TheaterName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.TheaterName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.TheaterName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-15">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+        <div class="form-group" id="forgotLink"><a href="#">Forgot Password??Click Here</a></div>
+        <div class="form-group" id="signupLink"><a asp-controller="Theaters" asp-action="Create">New Theater!!Click Here For Registration</a></div>
+        <div class="form-group" id="submit"><button type="submit" class="btn btn-primary">Login</button></div>
+    </form>
+</div>
